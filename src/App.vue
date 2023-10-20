@@ -1,47 +1,55 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import MyForm from './components/form-components/MyForm.vue'
+import MyInput from './components/form-components/MyInput.vue'
+import MyBtn from '@/components/form-components/MyButton.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
   <main>
-    <TheWelcome />
+    <MyForm>
+      <template v-slot:title>
+        <h1>Личный кабинет</h1>
+        <h6>Вход с помощью лицевого счёта</h6>
+      </template>
+      <template v-slot:input>
+        <MyInput></MyInput>
+        <MyInput></MyInput>
+      </template>
+      <template v-slot:btn>
+        <MyBtn></MyBtn>
+      </template>
+      <template v-slot:foo>
+        <h6>
+          <a href="#">Не помните лицевой счет или пароль?</a>
+        </h6>
+        <h6>
+          <a href="#">Вход по телефону</a>
+        </h6>
+      </template>
+    </MyForm>
   </main>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+h1 {
+  color: #373653;
+  font-size: 20px;
+  /* font-family: Montserrat; */
+  font-weight: 700;
 }
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+h6 {
+  color: #626c77;
+  font-size: 14px;
+  /* font-family: Onest; */
+  font-weight: 400;
+}
+a{
+  text-decoration: underline;
+  color: inherit;
 }
 </style>
